@@ -13,7 +13,7 @@ public partial class Silla
 
     public string TipoSilla { get; set; } = null!;
 
-    public virtual ICollection<Boletum> Boleta { get; set; } = new List<Boletum>();
+    public virtual ICollection<Boleta> Boleta { get; set; } = new List<Boleta>();
 
     public virtual Sala Sala { get; set; } = null!;
 

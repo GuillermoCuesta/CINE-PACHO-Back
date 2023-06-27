@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebApi.Models;
 
-public partial class Boletum
+public partial class Boleta
 {
     public int IdBoleta { get; set; }
 

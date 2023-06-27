@@ -17,7 +17,7 @@ public partial class DbCinepachoContext : DbContext
 
     public virtual DbSet<BoletasGrati> BoletasGratis { get; set; }
 
-    public virtual DbSet<Boletum> Boleta { get; set; }
+    public virtual DbSet<Boleta> Boleta { get; set; }
 
     public virtual DbSet<Cargo> Cargos { get; set; }
 
@@ -92,7 +92,7 @@ public partial class DbCinepachoContext : DbContext
                 .HasConstraintName("FK_BOLETAS__CLIENTE_B_CLIENTE");
         });
 
-        modelBuilder.Entity<Boletum>(entity =>
+        modelBuilder.Entity<Boleta>(entity =>
         {
             entity.HasKey(e => e.IdBoleta);
 
