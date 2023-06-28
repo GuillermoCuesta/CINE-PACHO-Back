@@ -80,7 +80,6 @@ namespace WebApi.Services
             }
         }
 
-
         public async Task<IActionResult> Mostrar()
         {
             try
@@ -130,8 +129,9 @@ namespace WebApi.Services
                 Connection.abrir();
 
                 // Crear la consulta SQL para actualizar los datos del usuario en la base de datos
-                string query = "UPDATE Usuarios SET CodEmpleado = @CodEmpleado, ImagenUsuario = @ImagenUsuario, CorreoUsuario = @CorreoUsuario, ContrasenaUsuario = @ContrasenaUsuario WHERE IdUsuario = @IdUsuario";
-                SqlCommand command = new SqlCommand(query, Connection.conectar);
+                // string query = "UPDATE Usuarios SET CodEmpleado = @CodEmpleado, ImagenUsuario = @ImagenUsuario, CorreoUsuario = @CorreoUsuario, ContrasenaUsuario = @ContrasenaUsuario WHERE IdUsuario = @IdUsuario";
+                
+                SqlCommand command = new SqlCommand("ActualizarUsuario", Connection.conectar);
                 command.Parameters.AddWithValue("@CodEmpleado", usuario.CodEmpleado);
                 command.Parameters.AddWithValue("@ImagenUsuario", usuario.ImagenUsuario);
                 command.Parameters.AddWithValue("@CorreoUsuario", usuario.CorreoUsuario);
@@ -143,17 +143,15 @@ namespace WebApi.Services
 
                 if (rowsAffected > 0)
                 {
-                    return new StatusCodeResult(200); // Retornar una respuesta exitosa
+                    return new StatusCodeResult(200);
                 }
                 else
                 {
-                    // Retornar una respuesta de error si no se actualizó ningún registro
                     return new NotFoundResult();
                 }
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
                 return new StatusCodeResult(500);
             }
         }
@@ -165,8 +163,9 @@ namespace WebApi.Services
                 Connection.abrir();
 
                 // Crear la consulta SQL para eliminar el usuario de la base de datos por su id
-                string query = "DELETE FROM Usuarios WHERE Id_Usuario = @IdUsuario";
-                SqlCommand command = new SqlCommand(query, Connection.conectar);
+                //string query = "DELETE FROM Usuarios WHERE Id_Usuario = @IdUsuario";
+
+                SqlCommand command = new SqlCommand("EliminarUsuario", Connection.conectar);
                 command.Parameters.AddWithValue("@IdUsuario", id);
                 int rowsAffected = await command.ExecuteNonQueryAsync();
 
@@ -178,13 +177,11 @@ namespace WebApi.Services
                 }
                 else
                 {
-                    // Retornar una respuesta de error si no se eliminó ningún registro
                     return new NotFoundResult();
                 }
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
                 return new StatusCodeResult(500);
             }
         }

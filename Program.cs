@@ -16,6 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<UsuarioController>();
 
+builder.Services.AddScoped<IMultiplexService, MultiplexService>();
+builder.Services.AddScoped<MultiplexController>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

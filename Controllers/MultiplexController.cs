@@ -5,7 +5,6 @@ using WebApi.Interfaces;
 using WebApi.Models;
 using WebApi.Services;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApi.Controllers
 {
@@ -35,7 +34,7 @@ namespace WebApi.Controllers
             return await _multiplexService.Mostrar();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> Editar([FromBody] Multiplex multiplex)
         {
             return await _multiplexService.Editar(multiplex);
