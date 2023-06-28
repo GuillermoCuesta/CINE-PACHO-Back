@@ -13,7 +13,7 @@ public partial class Compra
 
     public decimal TotalCompra { get; set; }
 
-    public virtual ICollection<Boletum> Boleta { get; set; } = new List<Boletum>();
+    public virtual ICollection<Boleta> Boleta { get; set; } = new List<Boleta>();
 
     public virtual ICollection<EvaluacionServicio> EvaluacionServicios { get; set; } = new List<EvaluacionServicio>();
 
