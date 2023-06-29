@@ -14,9 +14,9 @@ namespace WebApi.Services
         {
             try
             {
-                Connection.abrir();
+                Connection.Instance.Open();
                 // Crear el comando para ejecutar el procedimiento almacenado
-                SqlCommand command = new SqlCommand("RegistrarUsuario", Connection.conectar);
+                SqlCommand command = new SqlCommand("RegistrarUsuario", Connection.Instance.Conectar);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@CodEmpleado", usuario.CodEmpleado);
                 command.Parameters.AddWithValue("@ImagenUsuario", usuario.ImagenUsuario);
@@ -24,7 +24,7 @@ namespace WebApi.Services
                 command.Parameters.AddWithValue("@ContrasenaUsuario", usuario.ContrasenaUsuario);
                 await command.ExecuteNonQueryAsync();
 
-                Connection.cerrar();
+                Connection.Instance.Close();
                 return new StatusCodeResult(200); // Retornar una respuesta exitosa
             }
             catch (Exception ex)
@@ -39,9 +39,9 @@ namespace WebApi.Services
         {
             try
             {
-                Connection.abrir();
+                Connection.Instance.Open();
                 // Crear el comando para ejecutar el procedimiento almacenado
-                SqlCommand command = new SqlCommand("IniciarSesion", Connection.conectar);
+                SqlCommand command = new SqlCommand("IniciarSesion", Connection.Instance.Conectar);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@CorreoUsuario", credenciales.CorreoUsuario);
                 command.Parameters.AddWithValue("@ContrasenaUsuario", credenciales.ContrasenaUsuario);
@@ -53,7 +53,7 @@ namespace WebApi.Services
 
                 await command.ExecuteNonQueryAsync();
 
-                Connection.cerrar();
+                Connection.Instance.Close();
 
                 int resultadoInicioSession = 1; // Obtener el resultado del inicio de sesión
 
@@ -84,11 +84,11 @@ namespace WebApi.Services
         {
             try
             {
-                Connection.abrir();
+                Connection.Instance.Open();
 
                 // Crear la consulta SQL para obtener todos los usuarios
                 string query = "SELECT * FROM Usuarios";
-                SqlCommand command = new SqlCommand(query, Connection.conectar);
+                SqlCommand command = new SqlCommand(query, Connection.Instance.Conectar);
                 SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 List<Usuario> usuarios = new List<Usuario>();
@@ -110,7 +110,7 @@ namespace WebApi.Services
 
                 reader.Close(); // Cerrar el DataReader
 
-                Connection.cerrar();
+                Connection.Instance.Close();
 
                 return new JsonResult(usuarios); // Retornar la lista de usuarios como respuesta JSON
             }
@@ -126,12 +126,14 @@ namespace WebApi.Services
         {
             try
             {
-                Connection.abrir();
+                Connection.Instance.Open();
 
                 // Crear la consulta SQL para actualizar los datos del usuario en la base de datos
                 // string query = "UPDATE Usuarios SET CodEmpleado = @CodEmpleado, ImagenUsuario = @ImagenUsuario, CorreoUsuario = @CorreoUsuario, ContrasenaUsuario = @ContrasenaUsuario WHERE IdUsuario = @IdUsuario";
                 
-                SqlCommand command = new SqlCommand("ActualizarUsuario", Connection.conectar);
+                SqlCommand command = new SqlCommand("ActualizarUsuario", Connection.Instance.Conectar);
+
+                command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@CodEmpleado", usuario.CodEmpleado);
                 command.Parameters.AddWithValue("@ImagenUsuario", usuario.ImagenUsuario);
                 command.Parameters.AddWithValue("@CorreoUsuario", usuario.CorreoUsuario);
@@ -139,7 +141,7 @@ namespace WebApi.Services
                 command.Parameters.AddWithValue("@IdUsuario", usuario.IdUsuario);
                 int rowsAffected = await command.ExecuteNonQueryAsync();
 
-                Connection.cerrar();
+                Connection.Instance.Close();
 
                 if (rowsAffected > 0)
                 {
@@ -160,16 +162,18 @@ namespace WebApi.Services
         {
             try
             {
-                Connection.abrir();
+                Connection.Instance.Open();
 
                 // Crear la consulta SQL para eliminar el usuario de la base de datos por su id
                 //string query = "DELETE FROM Usuarios WHERE Id_Usuario = @IdUsuario";
 
-                SqlCommand command = new SqlCommand("EliminarUsuario", Connection.conectar);
+                SqlCommand command = new SqlCommand("EliminarUsuario", Connection.Instance.Conectar);
+
+                command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@IdUsuario", id);
                 int rowsAffected = await command.ExecuteNonQueryAsync();
 
-                Connection.cerrar();
+                Connection.Instance.Close();
 
                 if (rowsAffected > 0)
                 {

@@ -35,6 +35,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
+        [Route("api/multiplex/editar")]
         public async Task<IActionResult> Editar([FromBody] Multiplex multiplex)
         {
             return await _multiplexService.Editar(multiplex);

@@ -39,7 +39,7 @@ namespace WebApi.Controllers
             return await _usuarioService.Mostrar();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> Editar([FromBody] Usuario usuario)
         {
             return await _usuarioService.Editar(usuario);
