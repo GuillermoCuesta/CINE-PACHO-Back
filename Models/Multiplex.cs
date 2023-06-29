@@ -5,13 +5,13 @@ namespace WebApi.Models;
 
 public partial class Multiplex
 {
-    public int IdMultiplex { get; set; }
+    public int? IdMultiplex { get; set; }
 
-    public string Ubicacion { get; set; } = null!;
+    public string? Ubicacion { get; set; } = null!;
 
-    public string Direccion { get; set; } = null!;
+    public string? Direccion { get; set; } = null!;
 
-    public string ImagenMultiplex { get; set; } = null!;
+    public string? ImagenMultiplex { get; set; } = null!;
 
     public virtual ICollection<Empleado> Empleados { get; set; } = new List<Empleado>();
 
