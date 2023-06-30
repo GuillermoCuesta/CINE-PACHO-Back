@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using WebApi.Services;
 using WebApi.Controllers;
 using WebApi.Interfaces;
+using WebApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,11 +14,25 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configuración de los servicios personalizados
+builder.Services.AddScoped<IEntityService<Usuario>, UsuarioService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<UsuarioController>();
 
-builder.Services.AddScoped<IMultiplexService, MultiplexService>();
+
+builder.Services.AddScoped<IEntityService<Multiplex>, MultiplexService>();
 builder.Services.AddScoped<MultiplexController>();
+
+builder.Services.AddScoped<IEntityService<Funcion>, FuncionService>();
+
+builder.Services.AddScoped<IEntityService<Sala>, SalaService>();
+builder.Services.AddScoped<ISalaService, SalaService>();
+
+builder.Services.AddScoped<IEntityService<Silla>, SillaService>();
+
+
+
+//builder.Services.AddScoped<IEntityService, MultiplexService>();
+//builder.Services.AddScoped<MultiplexController>();
 
 var app = builder.Build();
 
