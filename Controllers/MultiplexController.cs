@@ -11,40 +11,40 @@ namespace WebApi.Controllers
     [Route("api/multiplex")]
     [ApiController]
 
-    public class MultiplexController : ControllerBase, IMultiplexService
+    public class MultiplexController : ControllerBase
     {
 
-        private readonly IMultiplexService _multiplexService;
+        private readonly IEntityService<Multiplex> _entityService;
 
-        public MultiplexController(IMultiplexService multiplexService)
+        public MultiplexController(IEntityService<Multiplex> entityService)
         {
-            _multiplexService = multiplexService;
+            _entityService = entityService;
         }
 
         [HttpPost]
-        [Route("api/multiplex/registrar")]
+        [Route("registrar")]
         public async Task<IActionResult> Crear([FromBody] Multiplex multiplex)
         {
-            return await _multiplexService.Crear(multiplex);
+            return await _entityService.Crear(multiplex);
         }
 
         [HttpGet]
         public async Task<IActionResult> Mostrar()
         {
-            return await _multiplexService.Mostrar();
+            return await _entityService.Mostrar();
         }
 
         [HttpPut]
-        [Route("api/multiplex/editar")]
+        [Route("editar")]
         public async Task<IActionResult> Editar([FromBody] Multiplex multiplex)
         {
-            return await _multiplexService.Editar(multiplex);
+            return await _entityService.Editar(multiplex);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
-            return await _multiplexService.Eliminar(id);
+            return await _entityService.Eliminar(id);
         }
     }
 }

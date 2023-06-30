@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace WebApi.Services
 {
-    public class MultiplexService:IMultiplexService
+    public class MultiplexService : IEntityService<Multiplex>
     {
         public async Task<IActionResult> Crear(Multiplex multiplex)
         {

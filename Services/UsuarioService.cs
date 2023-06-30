@@ -7,7 +7,7 @@ using WebApi.Models;
 
 namespace WebApi.Services
 {
-    public class UsuarioService:IUsuarioService
+    public class UsuarioService : IEntityService<Usuario>, IUsuarioService
     {
 
         public async Task<IActionResult> Crear(Usuario usuario)
@@ -130,7 +130,7 @@ namespace WebApi.Services
 
                 // Crear la consulta SQL para actualizar los datos del usuario en la base de datos
                 // string query = "UPDATE Usuarios SET CodEmpleado = @CodEmpleado, ImagenUsuario = @ImagenUsuario, CorreoUsuario = @CorreoUsuario, ContrasenaUsuario = @ContrasenaUsuario WHERE IdUsuario = @IdUsuario";
-                
+
                 SqlCommand command = new SqlCommand("ActualizarUsuario", Connection.Instance.Conectar);
 
                 command.CommandType = CommandType.StoredProcedure;

@@ -3,6 +3,9 @@
     "mssql1": {
       "ignored": "true",
       "type": "mssql"
+    },
+    "apis1": {
+      "type": "apis"
     }
   }
 }

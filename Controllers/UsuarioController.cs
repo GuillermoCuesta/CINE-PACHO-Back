@@ -9,25 +9,28 @@ namespace WebApi.Controllers
 {
     [ApiController]
     [Route("api/usuarios")]
-    public class UsuarioController : ControllerBase, IUsuarioService
+    public class UsuarioController : ControllerBase
     {
 
+        private readonly IEntityService<Usuario> _entityService;
         private readonly IUsuarioService _usuarioService;
 
-        public UsuarioController(IUsuarioService usuarioService)
+
+        public UsuarioController(IEntityService<Usuario> entityService, IUsuarioService usuarioService)
         {
+            _entityService = entityService;
             _usuarioService = usuarioService;
         }
 
         [HttpPost]
-        [Route("api/usuarios/registrar")]
+        [Route("registrar")]
         public async Task<IActionResult> Crear([FromBody] Usuario usuario)
         {
-            return await _usuarioService.Crear(usuario);
+            return await _entityService.Crear(usuario);
         }
 
         [HttpPost]
-        [Route("api/usuarios/iniciar-sesion")]
+        [Route("iniciar-sesion")]
         public async Task<IActionResult> IniciarSession([FromBody] Usuario credenciales)
         {
             return await _usuarioService.IniciarSession(credenciales);
@@ -36,19 +39,19 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Mostrar()
         {
-            return await _usuarioService.Mostrar();
+            return await _entityService.Mostrar();
         }
 
         [HttpPut]
         public async Task<IActionResult> Editar([FromBody] Usuario usuario)
         {
-            return await _usuarioService.Editar(usuario);
+            return await _entityService.Editar(usuario);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
-            return await _usuarioService.Eliminar(id);
+            return await _entityService.Eliminar(id);
         }
     }
 }
