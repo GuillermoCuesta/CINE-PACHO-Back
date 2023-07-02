@@ -13,9 +13,9 @@ public partial class Multiplex
 
     public string? ImagenMultiplex { get; set; } = null!;
 
-    public virtual ICollection<Empleado> Empleados { get; set; } = new List<Empleado>();
+    //public virtual ICollection<Empleado> Empleados { get; set; } = new List<Empleado>();
 
-    public virtual ICollection<Inventario> Inventarios { get; set; } = new List<Inventario>();
+    //public virtual ICollection<Inventario> Inventarios { get; set; } = new List<Inventario>();
 
-    public virtual ICollection<Sala> Salas { get; set; } = new List<Sala>();
+    //public virtual ICollection<Sala> Salas { get; set; } = new List<Sala>();
 }

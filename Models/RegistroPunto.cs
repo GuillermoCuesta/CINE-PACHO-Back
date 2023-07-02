@@ -13,5 +13,5 @@ public partial class RegistroPunto
 
     public int PuntosObtenidos { get; set; }
 
-    public virtual Cliente IdClienteNavigation { get; set; } = null!;
+    //public virtual Cliente IdClienteNavigation { get; set; } = null!;
 }

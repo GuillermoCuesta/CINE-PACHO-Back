@@ -7,5 +7,5 @@ public partial class Permiso
 {
     public int IdPermiso { get; set; }
 
-    public virtual ICollection<Rol> Rols { get; set; } = new List<Rol>();
+    //public virtual ICollection<Rol> Rols { get; set; } = new List<Rol>();
 }

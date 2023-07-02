@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using WebApi.Data_Access;
@@ -7,7 +8,7 @@ using WebApi.Models;
 
 namespace WebApi.Services
 {
-    public class UsuarioService : IEntityService<Usuario>, IUsuarioService
+    public class UsuarioService : IEntityService<Usuario>, IUsuarioService, IDeleteIntService
     {
 
         public async Task<IActionResult> Crear(Usuario usuario)
@@ -22,10 +23,12 @@ namespace WebApi.Services
                 command.Parameters.AddWithValue("@ImagenUsuario", usuario.ImagenUsuario);
                 command.Parameters.AddWithValue("@CorreoUsuario", usuario.CorreoUsuario);
                 command.Parameters.AddWithValue("@ContrasenaUsuario", usuario.ContrasenaUsuario);
-                await command.ExecuteNonQueryAsync();
+                var result = await command.ExecuteNonQueryAsync();
 
                 Connection.Instance.Close();
-                return new StatusCodeResult(200); // Retornar una respuesta exitosa
+                //return new StatusCodeResult(200) { Value = result }; // Retornar una respuesta exitosa junto con la variable result
+
+                return new OkObjectResult(result);
             }
             catch (Exception ex)
             {

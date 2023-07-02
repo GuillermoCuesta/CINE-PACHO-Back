@@ -13,7 +13,7 @@ public partial class Item
 
     public int CantidadItem { get; set; }
 
-    public virtual Compra IdCompraNavigation { get; set; } = null!;
+    //public virtual Compra IdCompraNavigation { get; set; } = null!;
 
-    public virtual Snack IdSnackNavigation { get; set; } = null!;
+    //public virtual Snack IdSnackNavigation { get; set; } = null!;
 }

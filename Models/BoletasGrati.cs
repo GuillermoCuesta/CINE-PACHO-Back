@@ -13,5 +13,5 @@ public partial class BoletasGrati
 
     public DateTime? FechaReclamo { get; set; }
 
-    public virtual Cliente IdClienteNavigation { get; set; } = null!;
+    //public virtual Cliente IdClienteNavigation { get; set; } = null!;
 }

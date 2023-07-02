@@ -7,10 +7,12 @@ using WebApi.Data_Access;
 using WebApi.Interfaces;
 using WebApi.Models;
 using System.Collections.Generic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Reflection;
 
 namespace WebApi.Services
 {
-    public class FuncionService : IEntityService<Funcion>
+    public class FuncionService : IEntityService<Funcion>, IDeleteIntService, IReadIntService
     {
         public async Task<IActionResult> Crear(Funcion funcion)
         {
@@ -39,14 +41,15 @@ namespace WebApi.Services
             }
         }
 
-        public async Task<IActionResult> Mostrar()
+        public async Task<IActionResult> Mostrar(int multiplex)
         {
             try
             {
                 Connection.Instance.Open();
 
-                string query = "SELECT * FROM FUNCION";
-                SqlCommand command = new SqlCommand(query, Connection.Instance.Conectar);
+                SqlCommand command = new SqlCommand("MostrarFunciones", Connection.Instance.Conectar);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@IdMultiplex", multiplex);
                 SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 List<Funcion> funciones = new List<Funcion>();
@@ -54,14 +57,17 @@ namespace WebApi.Services
                 while (reader.Read())
                 {
                     Funcion funcion = new Funcion
-                    {
-                        IdFuncion = (int)reader["ID_FUNCION"],
-                        IdMultiplex = (int)reader["ID_MULTIPLEX"],
-                        NumSala = (int)reader["NUM_SALA"],
+                    {         
+                        Ubicacion = (string)reader["UBICACION"],
                         IdPelicula = (int)reader["ID_PELICULA"],
+                        NombrePelicula = (string)reader["NOMBRE_PELICULA"],
+                        IdFuncion = (int)reader["ID_FUNCION"],
+                        IdMultiplex = multiplex,
+                        NumSala = (int)reader["NUM_SALA"],
                         Estado = (string)reader["ESTADO"],
                         FechaInicio = (DateTime)reader["FECHA_INICIO"],
                         FechaFin = (DateTime)reader["FECHA_FIN"]
+
                     };
 
                     funciones.Add(funcion);
@@ -77,6 +83,7 @@ namespace WebApi.Services
                 return new StatusCodeResult(500);
             }
         }
+
 
         public async Task<IActionResult> Editar(Funcion funcion)
         {

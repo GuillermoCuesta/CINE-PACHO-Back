@@ -3,9 +3,8 @@ using WebApi.Models;
 
 namespace WebApi.Interfaces
 {
-    public interface ISalaService
+    public interface IReadIntService
     {
-        Task<IActionResult> Mostrar(int funcion);
-
+        Task<IActionResult> Mostrar(int id);
     }
 }

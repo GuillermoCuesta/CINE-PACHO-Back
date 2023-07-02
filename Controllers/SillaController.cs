@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using WebApi.Interfaces;
 using WebApi.Models;
 
@@ -10,10 +11,14 @@ namespace WebApi.Controllers
     public class SillaController : ControllerBase
     {
         private readonly IEntityService<Silla> _entityService;
+        private readonly IDeleteEntityService<Silla> _deleteService;
+        private readonly IReadEntityService<Silla> _readEntityService;
 
-        public SillaController(IEntityService<Silla> entityService)
+        public SillaController(IEntityService<Silla> entityService, IDeleteEntityService<Silla> deleteService, IReadEntityService<Silla> readEntityService)
         {
             _entityService = entityService;
+            _deleteService = deleteService;
+            _readEntityService = readEntityService;
         }
 
         [HttpPost]
@@ -23,10 +28,11 @@ namespace WebApi.Controllers
             return await _entityService.Crear(silla);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Mostrar()
+        [HttpPost]
+        [Route("mostrar")]
+        public async Task<IActionResult> Mostrar([FromBody] Silla sala)
         {
-            return await _entityService.Mostrar();
+            return await _readEntityService.Mostrar(sala);
         }
 
         [HttpPut]
@@ -36,11 +42,12 @@ namespace WebApi.Controllers
             return await _entityService.Editar(silla);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Eliminar(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Eliminar(Silla silla)
         {
-            return await _entityService.Eliminar(id);
+            return await _deleteService.Eliminar(silla);
         }
+
     }
 }
 

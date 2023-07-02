@@ -13,7 +13,7 @@ public partial class HistorialCargo
 
     public DateTime FechaAsignacion { get; set; }
 
-    public virtual Cargo CargoNavigation { get; set; } = null!;
+    //public virtual Cargo CargoNavigation { get; set; } = null!;
 
-    public virtual Empleado CodEmpleadoNavigation { get; set; } = null!;
+    //public virtual Empleado CodEmpleadoNavigation { get; set; } = null!;
 }

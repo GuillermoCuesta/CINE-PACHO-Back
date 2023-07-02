@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebApi.Interfaces;
 using WebApi.Models;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -11,13 +12,16 @@ namespace WebApi.Controllers
     public class SalaController : ControllerBase
     {
         private readonly IEntityService<Sala> _entityService;
-        private readonly ISalaService _salaService;
+        private readonly IReadIntService _salaService;
+        private readonly IDeleteEntityService<Sala> _deleteService;
 
 
-        public SalaController(IEntityService<Sala> entityService, ISalaService salaService)
+
+        public SalaController(IEntityService<Sala> entityService, SalaService salaService, IDeleteEntityService<Sala> deleteService)
         {
             _entityService = entityService;
             _salaService = salaService;
+            _deleteService = deleteService;
         }
 
         [HttpPost]
@@ -40,10 +44,10 @@ namespace WebApi.Controllers
             return await _entityService.Editar(sala);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Eliminar(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Eliminar(Sala sala)
         {
-            return await _entityService.Eliminar(id);
+            return await _deleteService.Eliminar(sala);
         }
     }
 }

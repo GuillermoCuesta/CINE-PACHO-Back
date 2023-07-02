@@ -23,13 +23,13 @@ public partial class Empleado
 
     public decimal Salario { get; set; }
 
-    public virtual Cargo CargoNavigation { get; set; } = null!;
+    //public virtual Cargo CargoNavigation { get; set; } = null!;
 
-    public virtual ICollection<HistorialCargo> HistorialCargos { get; set; } = new List<HistorialCargo>();
+    //public virtual ICollection<HistorialCargo> HistorialCargos { get; set; } = new List<HistorialCargo>();
 
-    public virtual Multiplex IdMultiplexNavigation { get; set; } = null!;
+    //public virtual Multiplex IdMultiplexNavigation { get; set; } = null!;
 
-    public virtual Rol? RolNavigation { get; set; }
+    //public virtual Rol? RolNavigation { get; set; }
 
-    public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+    //public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
 }

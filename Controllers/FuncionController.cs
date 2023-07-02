@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using WebApi.Interfaces;
 using WebApi.Models;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -12,10 +13,16 @@ namespace WebApi.Controllers
     public class FuncionController : ControllerBase
     {
         private readonly IEntityService<Funcion> _entityService;
+        private readonly IDeleteIntService _deleteService;
+        private readonly IReadIntService _readIntService;
 
-        public FuncionController(IEntityService<Funcion> entityService)
+
+
+        public FuncionController(IEntityService<Funcion> entityService, FuncionService deleteService, FuncionService readIntService)
         {
             _entityService = entityService;
+            _deleteService = deleteService;
+            _readIntService = readIntService;
         }
 
         [HttpPost]
@@ -26,9 +33,9 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Mostrar()
+        public async Task<IActionResult> Mostrar(int multiplex)
         {
-            return await _entityService.Mostrar();
+            return await _readIntService.Mostrar(multiplex);
         }
 
         [HttpPut]
@@ -41,7 +48,7 @@ namespace WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
-            return await _entityService.Eliminar(id);
+            return await _deleteService.Eliminar(id);
         }
     }
 }

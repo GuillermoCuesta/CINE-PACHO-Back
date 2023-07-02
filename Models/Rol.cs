@@ -9,7 +9,7 @@ public partial class Rol
 
     public int? IdPermiso { get; set; }
 
-    public virtual ICollection<Empleado> Empleados { get; set; } = new List<Empleado>();
+    //public virtual ICollection<Empleado> Empleados { get; set; } = new List<Empleado>();
 
-    public virtual Permiso? IdPermisoNavigation { get; set; }
+    //public virtual Permiso? IdPermisoNavigation { get; set; }
 }
