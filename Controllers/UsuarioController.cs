@@ -4,6 +4,7 @@ using System.Data;
 using WebApi.Data_Access;
 using WebApi.Interfaces;
 using WebApi.Models;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -14,11 +15,13 @@ namespace WebApi.Controllers
 
         private readonly IEntityService<Usuario> _entityService;
         private readonly IUsuarioService _usuarioService;
+        private readonly IDeleteIntService _deleteService;
 
 
-        public UsuarioController(IEntityService<Usuario> entityService, IUsuarioService usuarioService)
+        public UsuarioController(IEntityService<Usuario> entityService, UsuarioService deleteService, IUsuarioService usuarioService)
         {
             _entityService = entityService;
+            _deleteService = deleteService;
             _usuarioService = usuarioService;
         }
 
@@ -39,7 +42,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Mostrar()
         {
-            return await _entityService.Mostrar();
+            return await _usuarioService.Mostrar();
         }
 
         [HttpPut]
@@ -51,7 +54,7 @@ namespace WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
-            return await _entityService.Eliminar(id);
+            return await _deleteService.Eliminar(id);
         }
     }
 }

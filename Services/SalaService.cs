@@ -7,7 +7,7 @@ using WebApi.Models;
 
 namespace WebApi.Services
 {
-    public class SalaService : IEntityService<Sala>, ISalaService
+    public class SalaService : IEntityService<Sala>, IReadIntService, IDeleteEntityService<Sala>
     {
         public async Task<IActionResult> Crear(Sala sala)
         {
@@ -38,10 +38,10 @@ namespace WebApi.Services
             try
             {
                 Connection.Instance.Open();
-                // Crear la consulta SQL para obtener todas las salas
-                string query = "SELECT * FROM SALA WHERE FUNCION = @Funcion";
-                SqlCommand command = new SqlCommand(query, Connection.Instance.Conectar);
-                command.Parameters.AddWithValue("@Funcion", funcion);
+
+                SqlCommand command = new SqlCommand("MostrarSalas", Connection.Instance.Conectar);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@IdFuncion", funcion);
                 SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 List<Sala> salas = new List<Sala>();
@@ -122,7 +122,7 @@ namespace WebApi.Services
             public string Message { get; set; }
         }
 
-        public async Task<IActionResult> Eliminar(int id)
+        public async Task<IActionResult> Eliminar(Sala sala)
         {
             try
             {
@@ -130,7 +130,9 @@ namespace WebApi.Services
 
                 SqlCommand command = new SqlCommand("EliminarSala", Connection.Instance.Conectar);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@IdSala", id);
+                command.Parameters.AddWithValue("@IdMultiplex", sala.IdMultiplex);
+                command.Parameters.AddWithValue("@NumSala", sala.NumSala);
+
                 int rowsAffected = await command.ExecuteNonQueryAsync();
 
                 Connection.Instance.Close();
@@ -148,11 +150,6 @@ namespace WebApi.Services
             {
                 return new StatusCodeResult(500);
             }
-        }
-
-        public Task<IActionResult> Mostrar()
-        {
-            throw new NotImplementedException();
         }
     }
 }

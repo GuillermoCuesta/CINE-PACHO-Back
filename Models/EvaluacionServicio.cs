@@ -15,7 +15,7 @@ public partial class EvaluacionServicio
 
     public string DescEvaluacionSer { get; set; } = null!;
 
-    public virtual Cliente IdClienteNavigation { get; set; } = null!;
+    //public virtual Cliente IdClienteNavigation { get; set; } = null!;
 
-    public virtual Compra IdCompraNavigation { get; set; } = null!;
+    //public virtual Compra IdCompraNavigation { get; set; } = null!;
 }

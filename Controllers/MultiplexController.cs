@@ -15,10 +15,15 @@ namespace WebApi.Controllers
     {
 
         private readonly IEntityService<Multiplex> _entityService;
+        private readonly IDeleteIntService _deleteService;
+        private readonly IReadService _readService;
 
-        public MultiplexController(IEntityService<Multiplex> entityService)
+
+        public MultiplexController(IEntityService<Multiplex> entityService, MultiplexService deleteService, IReadService readService)
         {
             _entityService = entityService;
+            _deleteService = deleteService;
+            _readService = readService;
         }
 
         [HttpPost]
@@ -31,7 +36,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Mostrar()
         {
-            return await _entityService.Mostrar();
+            return await _readService.Mostrar();
         }
 
         [HttpPut]
@@ -44,7 +49,7 @@ namespace WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
-            return await _entityService.Eliminar(id);
+            return await _deleteService.Eliminar(id);
         }
     }
 }

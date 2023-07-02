@@ -15,7 +15,7 @@ public partial class EvaluacionPelicula
 
     public string DescEvaluacionPel { get; set; } = null!;
 
-    public virtual Cliente IdClienteNavigation { get; set; } = null!;
+    //public virtual Cliente IdClienteNavigation { get; set; } = null!;
 
-    public virtual Pelicula IdPeliculaNavigation { get; set; } = null!;
+    //public virtual Pelicula IdPeliculaNavigation { get; set; } = null!;
 }

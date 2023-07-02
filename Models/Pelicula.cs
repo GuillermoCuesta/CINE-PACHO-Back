@@ -13,7 +13,7 @@ public partial class Pelicula
 
     public string ImagenPelicula { get; set; } = null!;
 
-    public virtual ICollection<EvaluacionPelicula> EvaluacionPeliculas { get; set; } = new List<EvaluacionPelicula>();
+    //public virtual ICollection<EvaluacionPelicula> EvaluacionPeliculas { get; set; } = new List<EvaluacionPelicula>();
 
-    public virtual ICollection<Funcion> Funcions { get; set; } = new List<Funcion>();
+    //public virtual ICollection<Funcion> Funcions { get; set; } = new List<Funcion>();
 }

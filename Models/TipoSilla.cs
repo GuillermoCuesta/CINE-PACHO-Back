@@ -9,5 +9,5 @@ public partial class TipoSilla
 
     public decimal PrecioSilla { get; set; }
 
-    public virtual ICollection<Silla> Sillas { get; set; } = new List<Silla>();
+    //public virtual ICollection<Silla> Sillas { get; set; } = new List<Silla>();
 }

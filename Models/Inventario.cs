@@ -11,7 +11,7 @@ public partial class Inventario
 
     public int CantidadEnStock { get; set; }
 
-    public virtual Multiplex IdMultiplexNavigation { get; set; } = null!;
+    //public virtual Multiplex IdMultiplexNavigation { get; set; } = null!;
 
-    public virtual Snack IdSnackNavigation { get; set; } = null!;
+    //public virtual Snack IdSnackNavigation { get; set; } = null!;
 }

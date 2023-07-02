@@ -15,5 +15,5 @@ public partial class Usuario
 
     public string? ContrasenaUsuario { get; set; } = null!;
 
-    public virtual Empleado? CodEmpleadoNavigation { get; set; }
+    //public virtual Empleado? CodEmpleadoNavigation { get; set; }
 }

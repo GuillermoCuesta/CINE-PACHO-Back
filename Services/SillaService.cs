@@ -7,11 +7,11 @@ using WebApi.Data_Access;
 using WebApi.Interfaces;
 using WebApi.Models;
 using System.Collections.Generic;
-
+using System.Reflection;
 
 namespace WebApi.Services
 {
-    public class SillaService : IEntityService<Silla>
+    public class SillaService : IEntityService<Silla>, IDeleteEntityService<Silla>, IReadEntityService<Silla>
     {
         public async Task<IActionResult> Crear(Silla silla)
         {
@@ -38,14 +38,16 @@ namespace WebApi.Services
             }
         }
 
-        public async Task<IActionResult> Mostrar()
+        public async Task<IActionResult> Mostrar(Silla sala)
         {
             try
             {
                 Connection.Instance.Open();
-                // Crear la consulta SQL para obtener todas las sillas
-                string query = "SELECT * FROM Silla";
-                SqlCommand command = new SqlCommand(query, Connection.Instance.Conectar);
+
+                SqlCommand command = new SqlCommand("MostrarSillas", Connection.Instance.Conectar);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@IdMultiplex", sala.IdMultiplex);
+                command.Parameters.AddWithValue("@numSala", sala.NumSala);
                 SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 List<Silla> sillas = new List<Silla>();
@@ -55,11 +57,25 @@ namespace WebApi.Services
                     // Construir el objeto Silla con los datos obtenidos de la base de datos
                     Silla silla = new Silla
                     {
-                        IdMultiplex = (int)reader["IdMultiplex"],
-                        NumSala = (int)reader["NumSala"],
-                        NumSilla = (string)reader["NumSilla"],
-                        TipoSilla = (string)reader["TipoSilla"]
+                        IdMultiplex = sala.IdMultiplex,
+                        NumSala = sala.NumSala,
+                        NumSilla = (string)reader["NUM_SILLA"],
+                        TipoSilla = (string)reader["TIPO_SILLA"]
                     };
+
+                    // Utilizar un diccionario para almacenar los datos adicionales
+                    Dictionary<string, object> additionalData = new Dictionary<string, object>();
+                    additionalData.Add("UBICACION", reader["UBICACION"]);
+
+                    // Utilizar reflexión para asignar los datos adicionales a las propiedades de Silla
+                    foreach (var kvp in additionalData)
+                    {
+                        PropertyInfo property = silla.GetType().GetProperty(kvp.Key, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                        if (property != null && property.CanWrite)
+                        {
+                            property.SetValue(silla, kvp.Value);
+                        }
+                    }
 
                     sillas.Add(silla);
                 }
@@ -76,6 +92,7 @@ namespace WebApi.Services
                 return new StatusCodeResult(500);
             }
         }
+
 
         public async Task<IActionResult> Editar(Silla silla)
         {
@@ -128,7 +145,7 @@ namespace WebApi.Services
             public string Message { get; set; }
         }
 
-        public async Task<IActionResult> Eliminar(int id)
+        public async Task<IActionResult> Eliminar(Silla silla)
         {
             try
             {
@@ -137,7 +154,9 @@ namespace WebApi.Services
                 SqlCommand command = new SqlCommand("EliminarSilla", Connection.Instance.Conectar);
 
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@IdMultiplex", id);
+                command.Parameters.AddWithValue("@IdMultiplex", silla.IdMultiplex);
+                command.Parameters.AddWithValue("@NumSala", silla.NumSala);
+                command.Parameters.AddWithValue("@NumSilla", silla.NumSilla);
                 int rowsAffected = await command.ExecuteNonQueryAsync();
 
                 Connection.Instance.Close();
