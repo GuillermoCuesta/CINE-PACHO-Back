@@ -20,7 +20,7 @@ namespace WebApi.Services
                 SqlCommand command = new SqlCommand("RegistrarUsuario", Connection.Instance.Conectar);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@CodEmpleado", usuario.CodEmpleado);
-                command.Parameters.AddWithValue("@ImagenUsuario", usuario.ImagenUsuario);
+                //command.Parameters.AddWithValue("@ImagenUsuario", usuario.ImagenUsuario);
                 command.Parameters.AddWithValue("@CorreoUsuario", usuario.CorreoUsuario);
                 command.Parameters.AddWithValue("@ContrasenaUsuario", usuario.ContrasenaUsuario);
                 var result = await command.ExecuteNonQueryAsync();
