@@ -15,8 +15,6 @@ public partial class Boleta
 
     public string NumSilla { get; set; } = null!;
 
-    public int CantidadBoleta { get; set; }
-
     //public virtual Compra IdCompraNavigation { get; set; } = null!;
 
     //public virtual Silla Silla { get; set; } = null!;

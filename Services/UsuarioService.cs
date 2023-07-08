@@ -68,7 +68,7 @@ namespace WebApi.Services
                 else if (resultadoInicioSession == 2)
                 {
                     // Credenciales inválidas
-                    return new BadRequestObjectResult("Credenciales de inicio de sesión inválidas.");
+                    return new StatusCodeResult(500);
                 }
                 else
                 {
@@ -166,9 +166,6 @@ namespace WebApi.Services
             try
             {
                 Connection.Instance.Open();
-
-                // Crear la consulta SQL para eliminar el usuario de la base de datos por su id
-                //string query = "DELETE FROM Usuarios WHERE Id_Usuario = @IdUsuario";
 
                 SqlCommand command = new SqlCommand("EliminarUsuario", Connection.Instance.Conectar);
 
