@@ -48,6 +48,7 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
+
             }
         }
 
@@ -71,6 +72,7 @@ namespace WebApi.Services
                         Ubicacion = (string)reader["UBICACION"],
                         IdPelicula = (int)reader["ID_PELICULA"],
                         NombrePelicula = (string)reader["NOMBRE_PELICULA"],
+                        ImagenPelicula= (string)reader["IMAGEN_PELICULA"],
                         IdFuncion = (int)reader["ID_FUNCION"],
                         IdMultiplex = multiplex,
                         NumSala = (int)reader["NUM_SALA"],
@@ -90,16 +92,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
-
-                return new ObjectResult(errorResponse)
-                {
-                    StatusCode = 500
-                };
             }
         }
 
@@ -140,7 +132,6 @@ namespace WebApi.Services
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
-                    Message = ex.ToString()
                 };
 
                 return new ObjectResult(errorResponse)
@@ -175,17 +166,8 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
 
-                return new ObjectResult(errorResponse)
                 {
-                    StatusCode = 500
-                };
-            }
         }
     }
 }

@@ -32,16 +32,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
-
-                return new ObjectResult(errorResponse)
-                {
-                    StatusCode = 500
-                };
             }
         }
 
@@ -75,43 +65,13 @@ namespace WebApi.Services
                 }
                 else if (resultadoInicioSession == 2)
                 {
-                    var errorResponse = new ErrorResponse
-                    {
-                        StatusCode = 500,
-                        Message = "Credenciales invalidas"
-                    };
-
-                    return new ObjectResult(errorResponse)
-                    {
-                        StatusCode = 500
-                    };
                 }
                 else
                 {
-                    var errorResponse = new ErrorResponse
-                    {
-                        StatusCode = 500,
-                        Message = "Se produjo un error en el servidor."
-                    };
-
-                    return new ObjectResult(errorResponse)
-                    {
-                        StatusCode = 500
-                    };
                 }
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
-
-                return new ObjectResult(errorResponse)
-                {
-                    StatusCode = 500
-                };
             }
         }
 
@@ -121,9 +81,6 @@ namespace WebApi.Services
             {
                 Connection.Instance.Open();
 
-                // Crear la consulta SQL para obtener todos los usuarios
-                string query = "SELECT * FROM Usuarios";
-                SqlCommand command = new SqlCommand(query, Connection.Instance.Conectar);
                 SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 List<Usuario> usuarios = new List<Usuario>();
@@ -150,21 +107,10 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
-
-                return new ObjectResult(errorResponse)
-                {
-                    StatusCode = 500
-                };
             }
         }
 
 
-        public async Task<IActionResult> Editar(Usuario usuario)
         {
             try
             {
@@ -196,16 +142,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
-
-                return new ObjectResult(errorResponse)
-                {
-                    StatusCode = 500
-                };
             }
         }
 
@@ -234,16 +170,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
-
-                return new ObjectResult(errorResponse)
-                {
-                    StatusCode = 500
-                };
             }
         }
     }

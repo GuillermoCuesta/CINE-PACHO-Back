@@ -22,6 +22,8 @@ public partial class Funcion
     public string? Ubicacion { get; set; }
     public string? NombrePelicula { get; set; }
 
+    public string? ImagenPelicula { get; set; }
+
     //public virtual Estado EstadoNavigation { get; set; } = null!;
 
     //public virtual Pelicula IdPeliculaNavigation { get; set; } = null!;
