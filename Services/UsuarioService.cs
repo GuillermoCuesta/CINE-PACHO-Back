@@ -32,16 +32,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
-
-                return new ObjectResult(errorResponse)
-                {
-                    StatusCode = 500
-                };
             }
         }
 
@@ -77,33 +67,14 @@ namespace WebApi.Services
                 }
                 else if (resultadoInicioSession == 2)
                 {
-                    var errorResponse = new ErrorResponse
-                    {
-                        StatusCode = 500,
-                        Message = "Credenciales invalidas"
-                    };
-
-                    return new ObjectResult(errorResponse)
-                    {
-                        StatusCode = 500
-                    };
                 }
                 else
                 {
-                    var errorResponse = new ErrorResponse
-                    {
-                        StatusCode = 500,
-                        Message = "Se produjo un error en el servidor."
-                    };
-
-                    return new ObjectResult(errorResponse)
-                    {
-                        StatusCode = 500
-                    };
                 }
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
                var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
@@ -115,6 +86,9 @@ namespace WebApi.Services
                     StatusCode = 500
                 };
            }
+=======
+            }
+>>>>>>> fd6e581 (Merge branch 'main' into despliegue)
         }
 
         public async Task<IActionResult> Mostrar()
@@ -151,6 +125,7 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
              var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
@@ -162,13 +137,18 @@ namespace WebApi.Services
                     StatusCode = 500
                 };
 
+=======
+>>>>>>> fd6e581 (Merge branch 'main' into despliegue)
             }
         }
 
 
+<<<<<<< HEAD
 
         public async Task<IActionResult> Editar(Usuario usuario)
 
+=======
+>>>>>>> fd6e581 (Merge branch 'main' into despliegue)
         {
             try
             {
@@ -200,6 +180,7 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
               var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
@@ -210,6 +191,8 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
+=======
+>>>>>>> fd6e581 (Merge branch 'main' into despliegue)
             }
         }
 
@@ -238,6 +221,7 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
                var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
@@ -248,6 +232,8 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
+=======
+>>>>>>> fd6e581 (Merge branch 'main' into despliegue)
             }
         }
     }

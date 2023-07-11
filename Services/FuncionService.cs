@@ -47,6 +47,7 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
+
             }
         }
 
@@ -90,16 +91,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                var errorResponse = new ErrorResponse
-                {
-                    StatusCode = 500,
-                    Message = ex.ToString()
-                };
-
-                return new ObjectResult(errorResponse)
-                {
-                    StatusCode = 500
-                };
             }
         }
 
@@ -140,7 +131,6 @@ namespace WebApi.Services
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
-                    Message = ex.ToString()
                 };
 
                 return new ObjectResult(errorResponse)
@@ -176,17 +166,16 @@ namespace WebApi.Services
             catch (Exception ex)
 
             {
+<<<<<<< HEAD
               var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
                     Message = ex.ToString()
                 };
+=======
+>>>>>>> fd6e581 (Merge branch 'main' into despliegue)
 
-                return new ObjectResult(errorResponse)
                 {
-                    StatusCode = 500
-                };
-            }
         }
 
     }
