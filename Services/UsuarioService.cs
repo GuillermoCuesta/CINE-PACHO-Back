@@ -32,8 +32,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
-=======
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
@@ -44,7 +42,6 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
->>>>>>> 632be40 (Eliminacion de Interfaces)
             }
         }
 
@@ -69,7 +66,9 @@ namespace WebApi.Services
 
                 Connection.Instance.Close();
 
-                int resultadoInicioSession = (int)resultadoParam.Value; 
+               
+                int resultadoInicioSession = (int)resultadoParam.Value;
+
 
                 if (resultadoInicioSession == 1)
                 {
@@ -78,11 +77,6 @@ namespace WebApi.Services
                 }
                 else if (resultadoInicioSession == 2)
                 {
-<<<<<<< HEAD
-                }
-                else
-                {
-=======
                     var errorResponse = new ErrorResponse
                     {
                         StatusCode = 500,
@@ -106,14 +100,11 @@ namespace WebApi.Services
                     {
                         StatusCode = 500
                     };
->>>>>>> 632be40 (Eliminacion de Interfaces)
                 }
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
-=======
-                var errorResponse = new ErrorResponse
+               var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
                     Message = ex.ToString()
@@ -123,8 +114,7 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
->>>>>>> 632be40 (Eliminacion de Interfaces)
-            }
+           }
         }
 
         public async Task<IActionResult> Mostrar()
@@ -132,6 +122,8 @@ namespace WebApi.Services
             try
             {
                 Connection.Instance.Open();
+                SqlCommand command = new SqlCommand("MostrarUsuarios", Connection.Instance.Conectar);
+                command.CommandType = CommandType.StoredProcedure;
 
                 SqlDataReader reader = await command.ExecuteReaderAsync();
 
@@ -159,9 +151,7 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
-=======
-                var errorResponse = new ErrorResponse
+             var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
                     Message = ex.ToString()
@@ -171,15 +161,14 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
->>>>>>> 632be40 (Eliminacion de Interfaces)
+
             }
         }
 
 
-<<<<<<< HEAD
-=======
+
         public async Task<IActionResult> Editar(Usuario usuario)
->>>>>>> 632be40 (Eliminacion de Interfaces)
+
         {
             try
             {
@@ -211,9 +200,7 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
-=======
-                var errorResponse = new ErrorResponse
+              var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
                     Message = ex.ToString()
@@ -223,7 +210,6 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
->>>>>>> 632be40 (Eliminacion de Interfaces)
             }
         }
 
@@ -252,9 +238,7 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
-=======
-                var errorResponse = new ErrorResponse
+               var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
                     Message = ex.ToString()
@@ -264,7 +248,6 @@ namespace WebApi.Services
                 {
                     StatusCode = 500
                 };
->>>>>>> 632be40 (Eliminacion de Interfaces)
             }
         }
     }
