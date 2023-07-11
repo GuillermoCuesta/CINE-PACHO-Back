@@ -32,6 +32,19 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
+=======
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
+>>>>>>> 632be40 (Eliminacion de Interfaces)
             }
         }
 
@@ -65,13 +78,52 @@ namespace WebApi.Services
                 }
                 else if (resultadoInicioSession == 2)
                 {
+<<<<<<< HEAD
                 }
                 else
                 {
+=======
+                    var errorResponse = new ErrorResponse
+                    {
+                        StatusCode = 500,
+                        Message = "Credenciales invalidas"
+                    };
+
+                    return new ObjectResult(errorResponse)
+                    {
+                        StatusCode = 500
+                    };
+                }
+                else
+                {
+                    var errorResponse = new ErrorResponse
+                    {
+                        StatusCode = 500,
+                        Message = "Se produjo un error en el servidor."
+                    };
+
+                    return new ObjectResult(errorResponse)
+                    {
+                        StatusCode = 500
+                    };
+>>>>>>> 632be40 (Eliminacion de Interfaces)
                 }
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
+=======
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
+>>>>>>> 632be40 (Eliminacion de Interfaces)
             }
         }
 
@@ -107,10 +159,27 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
+=======
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
+>>>>>>> 632be40 (Eliminacion de Interfaces)
             }
         }
 
 
+<<<<<<< HEAD
+=======
+        public async Task<IActionResult> Editar(Usuario usuario)
+>>>>>>> 632be40 (Eliminacion de Interfaces)
         {
             try
             {
@@ -142,6 +211,19 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
+=======
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
+>>>>>>> 632be40 (Eliminacion de Interfaces)
             }
         }
 
@@ -170,6 +252,19 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
+=======
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
+>>>>>>> 632be40 (Eliminacion de Interfaces)
             }
         }
     }
