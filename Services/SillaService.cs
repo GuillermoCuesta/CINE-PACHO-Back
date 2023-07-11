@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace WebApi.Services
 {
-    public class SillaService : IEntityService<Silla>, IDeleteEntityService<Silla>, IReadEntityService<Silla>
+    public class SillaService : ISillaService
     {
         public async Task<IActionResult> Crear(Silla silla)
         {
@@ -33,8 +33,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -88,8 +96,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -128,7 +144,7 @@ namespace WebApi.Services
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
-                    Message = "Se produjo un error en el servidor."
+                    Message = ex.ToString()
                 };
 
                 return new ObjectResult(errorResponse)
@@ -136,13 +152,6 @@ namespace WebApi.Services
                     StatusCode = 500
                 };
             }
-        }
-
-        // Clase para la respuesta de error personalizada
-        public class ErrorResponse
-        {
-            public int StatusCode { get; set; }
-            public string Message { get; set; }
         }
 
         public async Task<IActionResult> Eliminar(Silla silla)
@@ -172,8 +181,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
     }

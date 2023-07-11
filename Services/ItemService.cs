@@ -2,13 +2,13 @@
 using Microsoft.Data.SqlClient;
 using NLog.Fluent;
 using WebApi.Data_Access;
+using WebApi.Interfaces;
 using WebApi.Models;
 
 namespace WebApi.Services
 {
     public class ItemService : IItemService
     {
-        public ItemService() { }
 
         public async Task<IActionResult> Crear(CompraCliente compracliente)
         {
@@ -33,9 +33,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                Log.Error(ex.ToString());
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
 
-                return new StatusCodeResult(500);
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
 
         }

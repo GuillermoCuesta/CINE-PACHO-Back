@@ -29,8 +29,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -57,7 +65,7 @@ namespace WebApi.Services
                         NombreSnack = (string)reader["NOMBRE_SNACK"],
                         PrecioSnack = (int)reader["PRECIO_SNACK"],
                         ImagenSnack = (string)reader["IMAGEN_SNACK"],
-                        CantidadInStock = (int)reader["CANTIDAD_IN_STOCK"]
+                        CantidadInStock = (int)reader["CANTIDAD_EN_STOCK"]
                     };
 
                     snacks.Add(snack);
@@ -71,7 +79,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -108,7 +125,7 @@ namespace WebApi.Services
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
-                    Message = "Se produjo un error en el servidor."
+                    Message = ex.ToString()
                 };
 
                 return new ObjectResult(errorResponse)
@@ -116,13 +133,6 @@ namespace WebApi.Services
                     StatusCode = 500
                 };
             }
-        }
-
-        // Clase para la respuesta de error personalizada
-        public class ErrorResponse
-        {
-            public int StatusCode { get; set; }
-            public string Message { get; set; }
         }
     }
 }

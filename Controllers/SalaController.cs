@@ -11,24 +11,18 @@ namespace WebApi.Controllers
     [ApiController]
     public class SalaController : ControllerBase
     {
-        private readonly IEntityService<Sala> _entityService;
-        private readonly IReadIntService _salaService;
-        private readonly IDeleteEntityService<Sala> _deleteService;
+        private readonly ISalaService _salaService;
 
-
-
-        public SalaController(IEntityService<Sala> entityService, SalaService salaService, IDeleteEntityService<Sala> deleteService)
+        public SalaController(ISalaService salaService)
         {
-            _entityService = entityService;
             _salaService = salaService;
-            _deleteService = deleteService;
         }
 
         [HttpPost]
         [Route("registrar")]
         public async Task<IActionResult> Crear([FromBody] Sala sala)
         {
-            return await _entityService.Crear(sala);
+            return await _salaService.Crear(sala);
         }
 
         [HttpGet]
@@ -41,13 +35,13 @@ namespace WebApi.Controllers
         [Route("editar")]
         public async Task<IActionResult> Editar([FromBody] Sala sala)
         {
-            return await _entityService.Editar(sala);
+            return await _salaService.Editar(sala);
         }
 
         [HttpDelete]
         public async Task<IActionResult> Eliminar(Sala sala)
         {
-            return await _deleteService.Eliminar(sala);
+            return await _salaService.Eliminar(sala);
         }
     }
 }

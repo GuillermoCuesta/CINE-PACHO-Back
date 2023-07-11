@@ -12,43 +12,37 @@ namespace WebApi.Controllers
     [ApiController]
     public class FuncionController : ControllerBase
     {
-        private readonly IEntityService<Funcion> _entityService;
-        private readonly IDeleteIntService _deleteService;
-        private readonly IReadIntService _readIntService;
+        private readonly IFuncionService _funcionService;
 
-
-
-        public FuncionController(IEntityService<Funcion> entityService, FuncionService deleteService, FuncionService readIntService)
+        public FuncionController(IFuncionService funcionService)
         {
-            _entityService = entityService;
-            _deleteService = deleteService;
-            _readIntService = readIntService;
+            _funcionService = funcionService;
         }
 
         [HttpPost]
         [Route("registrar")]
         public async Task<IActionResult> Crear([FromBody] Funcion funcion)
         {
-            return await _entityService.Crear(funcion);
+            return await _funcionService.Crear(funcion);
         }
 
         [HttpGet]
         public async Task<IActionResult> Mostrar(int multiplex)
         {
-            return await _readIntService.Mostrar(multiplex);
+            return await _funcionService.Mostrar(multiplex);
         }
 
         [HttpPut]
         [Route("editar")]
         public async Task<IActionResult> Editar([FromBody] Funcion funcion)
         {
-            return await _entityService.Editar(funcion);
+            return await _funcionService.Editar(funcion);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
-            return await _deleteService.Eliminar(id);
+            return await _funcionService.Eliminar(id);
         }
     }
 }

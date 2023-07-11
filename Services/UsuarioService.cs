@@ -8,7 +8,7 @@ using WebApi.Models;
 
 namespace WebApi.Services
 {
-    public class UsuarioService : IEntityService<Usuario>, IUsuarioService, IDeleteIntService
+    public class UsuarioService : IUsuarioService
     {
 
         public async Task<IActionResult> Crear(Usuario usuario)
@@ -32,8 +32,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -58,7 +66,7 @@ namespace WebApi.Services
 
                 Connection.Instance.Close();
 
-                int resultadoInicioSession = 1; // Obtener el resultado del inicio de sesión
+                int resultadoInicioSession = (int)resultadoParam.Value; 
 
                 if (resultadoInicioSession == 1)
                 {
@@ -67,19 +75,43 @@ namespace WebApi.Services
                 }
                 else if (resultadoInicioSession == 2)
                 {
-                    // Credenciales inválidas
-                    return new StatusCodeResult(500);
+                    var errorResponse = new ErrorResponse
+                    {
+                        StatusCode = 500,
+                        Message = "Credenciales invalidas"
+                    };
+
+                    return new ObjectResult(errorResponse)
+                    {
+                        StatusCode = 500
+                    };
                 }
                 else
                 {
-                    // Otro error
-                    return new StatusCodeResult(500);
+                    var errorResponse = new ErrorResponse
+                    {
+                        StatusCode = 500,
+                        Message = "Se produjo un error en el servidor."
+                    };
+
+                    return new ObjectResult(errorResponse)
+                    {
+                        StatusCode = 500
+                    };
                 }
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -103,7 +135,6 @@ namespace WebApi.Services
                     {
                         IdUsuario = (int)reader["ID_USUARIO"],
                         CodEmpleado = (int)reader["COD_EMPLEADO"],
-                        ImagenUsuario = (string)reader["IMAGEN_USUARIO"],
                         CorreoUsuario = (string)reader["CORREO_USUARIO"],
                         ContrasenaUsuario = (string)reader["CONTRASENA_USUARIO"]
                     };
@@ -119,13 +150,21 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
 
-        public async Task<IActionResult> Editar([FromBody] Usuario usuario)
+        public async Task<IActionResult> Editar(Usuario usuario)
         {
             try
             {
@@ -157,7 +196,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -186,7 +234,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
     }

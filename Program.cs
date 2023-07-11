@@ -14,36 +14,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Usuario
-builder.Services.AddScoped<IEntityService<Usuario>, UsuarioService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-builder.Services.AddScoped<IDeleteIntService, UsuarioService>();
-builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<UsuarioController>();
 
 // Multiplex
-builder.Services.AddScoped<IEntityService<Multiplex>, MultiplexService>();
-builder.Services.AddScoped<IDeleteIntService, MultiplexService>();
-builder.Services.AddScoped<IReadService, MultiplexService>();
-builder.Services.AddScoped<MultiplexService>();
+
+builder.Services.AddScoped<IMultiplexService, MultiplexService>();
 builder.Services.AddScoped<MultiplexController>();
 
 // Funcion
-builder.Services.AddScoped<IEntityService<Funcion>, FuncionService>();
-builder.Services.AddScoped<IDeleteIntService, FuncionService>();
-builder.Services.AddScoped<IReadIntService, FuncionService>();
-builder.Services.AddScoped<FuncionService>();
+builder.Services.AddScoped<IFuncionService, FuncionService>();
 builder.Services.AddScoped<FuncionController>();
 
 // Sala
-builder.Services.AddScoped<IEntityService<Sala>, SalaService>();
-builder.Services.AddScoped<IDeleteEntityService<Sala>, SalaService>();
-builder.Services.AddScoped<SalaService>();
+builder.Services.AddScoped<ISalaService, SalaService>();
 builder.Services.AddScoped<SalaController>();
 
 // Silla
-builder.Services.AddScoped<IEntityService<Silla>, SillaService>();
-builder.Services.AddScoped<IDeleteEntityService<Silla>, SillaService>();
-builder.Services.AddScoped<IReadEntityService<Silla>, SillaService>();
+builder.Services.AddScoped<ISillaService, SillaService>();
 builder.Services.AddScoped<SillaController>();
 
 // Snack

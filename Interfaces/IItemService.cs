@@ -3,8 +3,8 @@ using WebApi.Models;
 
 namespace WebApi.Interfaces
 {
-    public interface IReadIntService
+    public interface IItemService
     {
-        Task<IActionResult> Mostrar(int id);
+        Task<IActionResult> Crear(CompraCliente compracliente);
     }
 }

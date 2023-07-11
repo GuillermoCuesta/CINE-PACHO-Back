@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace WebApi.Services
 {
-    public class MultiplexService : IEntityService<Multiplex>, IDeleteIntService, IReadService
+    public class MultiplexService : IMultiplexService
     {
         public async Task<IActionResult> Crear(Multiplex multiplex)
         {
@@ -31,8 +31,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -70,8 +78,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -113,7 +129,7 @@ namespace WebApi.Services
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
-                    Message = "Se produjo un error en el servidor."
+                    Message = ex.ToString()
                 };
 
                 return new ObjectResult(errorResponse)
@@ -121,13 +137,6 @@ namespace WebApi.Services
                     StatusCode = 500
                 };
             }
-        }
-
-        // Clase para la respuesta de error personalizada
-        public class ErrorResponse
-        {
-            public int StatusCode { get; set; }
-            public string Message { get; set; }
         }
 
         public async Task<IActionResult> Eliminar(int id)
@@ -155,8 +164,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
     }

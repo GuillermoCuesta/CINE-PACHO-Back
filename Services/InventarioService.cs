@@ -68,7 +68,8 @@ namespace WebApi.Services
                         NombreSnack = (string)reader["NOMBRE_SNACK"],
                         CantidadInStock = (int)reader["CANTIDAD_EN_STOCK"],
                         PrecioSnack = (int)reader["PRECIO_SNACK"],
-                        Ubicacion = (string)reader["UBICACION"]
+                        Ubicacion = (string)reader["UBICACION"],
+                        IdMultiplex = multiplex
 
                     };
 

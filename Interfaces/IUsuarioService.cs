@@ -7,5 +7,9 @@ namespace WebApi.Interfaces
     {
         Task<IActionResult> IniciarSession(Usuario credenciales);
         Task<IActionResult> Mostrar();
+        Task<IActionResult> Crear(Usuario usuario);
+        Task<IActionResult> Editar(Usuario usuario);
+        Task<IActionResult> Eliminar(int id);
+
     }
 }

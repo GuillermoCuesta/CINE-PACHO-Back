@@ -7,7 +7,7 @@ using WebApi.Models;
 
 namespace WebApi.Services
 {
-    public class SalaService : IEntityService<Sala>, IReadIntService, IDeleteEntityService<Sala>
+    public class SalaService : ISalaService
     {
         public async Task<IActionResult> Crear(Sala sala)
         {
@@ -29,7 +29,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -68,7 +77,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -106,7 +124,7 @@ namespace WebApi.Services
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
-                    Message = "Se produjo un error en el servidor."
+                    Message = ex.ToString()
                 };
 
                 return new ObjectResult(errorResponse)
@@ -114,12 +132,6 @@ namespace WebApi.Services
                     StatusCode = 500
                 };
             }
-        }
-
-        public class ErrorResponse
-        {
-            public int StatusCode { get; set; }
-            public string Message { get; set; }
         }
 
         public async Task<IActionResult> Eliminar(Sala sala)
@@ -148,7 +160,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
     }

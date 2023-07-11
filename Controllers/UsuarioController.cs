@@ -12,16 +12,11 @@ namespace WebApi.Controllers
     [Route("api/usuarios")]
     public class UsuarioController : ControllerBase
     {
-
-        private readonly IEntityService<Usuario> _entityService;
         private readonly IUsuarioService _usuarioService;
-        private readonly IDeleteIntService _deleteService;
 
 
-        public UsuarioController(IEntityService<Usuario> entityService, UsuarioService deleteService, IUsuarioService usuarioService)
+        public UsuarioController(IUsuarioService usuarioService)
         {
-            _entityService = entityService;
-            _deleteService = deleteService;
             _usuarioService = usuarioService;
         }
 
@@ -29,7 +24,7 @@ namespace WebApi.Controllers
         [Route("registrar")]
         public async Task<IActionResult> Crear([FromBody] Usuario usuario)
         {
-            return await _entityService.Crear(usuario);
+            return await _usuarioService.Crear(usuario);
         }
 
         [HttpPost]
@@ -48,13 +43,13 @@ namespace WebApi.Controllers
         [HttpPut]
         public async Task<IActionResult> Editar([FromBody] Usuario usuario)
         {
-            return await _entityService.Editar(usuario);
+            return await _usuarioService.Editar(usuario);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
-            return await _deleteService.Eliminar(id);
+            return await _usuarioService.Eliminar(id);
         }
     }
 }
