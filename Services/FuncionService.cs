@@ -37,6 +37,7 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+                //Correccion
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
