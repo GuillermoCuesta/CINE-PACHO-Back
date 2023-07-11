@@ -8,7 +8,7 @@ using WebApi.Models;
 
 namespace WebApi.Services
 {
-    public class UsuarioService : IEntityService<Usuario>, IUsuarioService, IDeleteIntService
+    public class UsuarioService : IUsuarioService
     {
 
         public async Task<IActionResult> Crear(Usuario usuario)
@@ -32,8 +32,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
             }
         }
 
@@ -58,7 +56,7 @@ namespace WebApi.Services
 
                 Connection.Instance.Close();
 
-                int resultadoInicioSession = (int)resultadoParam.Value;
+                int resultadoInicioSession = (int)resultadoParam.Value; 
 
                 if (resultadoInicioSession == 1)
                 {
@@ -67,19 +65,13 @@ namespace WebApi.Services
                 }
                 else if (resultadoInicioSession == 2)
                 {
-                    // Credenciales inválidas
-                    return new StatusCodeResult(500);
                 }
                 else
                 {
-                    // Otro error
-                    return new StatusCodeResult(500);
                 }
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
             }
         }
 
@@ -89,8 +81,6 @@ namespace WebApi.Services
             {
                 Connection.Instance.Open();
 
-                SqlCommand command = new SqlCommand("MostrarUsuarios", Connection.Instance.Conectar);
-                command.CommandType = CommandType.StoredProcedure;
                 SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 List<Usuario> usuarios = new List<Usuario>();
@@ -117,13 +107,10 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                // Manejar cualquier excepción y retornar una respuesta de error
-                return new StatusCodeResult(500);
             }
         }
 
 
-        public async Task<IActionResult> Editar([FromBody] Usuario usuario)
         {
             try
             {
@@ -155,7 +142,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
             }
         }
 
@@ -184,7 +170,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
             }
         }
     }

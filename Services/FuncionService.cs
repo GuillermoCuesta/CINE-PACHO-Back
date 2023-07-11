@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace WebApi.Services
 {
-    public class FuncionService : IEntityService<Funcion>, IDeleteIntService, IReadIntService
+    public class FuncionService : IFuncionService
     {
         public async Task<IActionResult> Crear(Funcion funcion)
         {
@@ -37,7 +37,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
             }
         }
 
@@ -81,7 +80,6 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
             }
         }
 
@@ -122,7 +120,6 @@ namespace WebApi.Services
                 var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
-                    Message = "Se produjo un error en el servidor."
                 };
 
                 return new ObjectResult(errorResponse)
@@ -157,14 +154,8 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(500);
-            }
-        }
 
-        public class ErrorResponse
-        {
-            public int StatusCode { get; set; }
-            public string Message { get; set; }
+                {
         }
     }
 }
