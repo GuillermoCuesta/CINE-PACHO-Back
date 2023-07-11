@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using System.Collections.Generic;
-
-namespace WebApi.Models;
+﻿namespace WebApi.Models;
 
 public partial class Sala
 {

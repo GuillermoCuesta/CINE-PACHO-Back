@@ -12,8 +12,8 @@
         public int? Puntos { get; set; }
         public int? IdMultiplex { get; set; }
         public int? IdSala { get; set; }
-        public List<Silla> Sillas { get; set;}
-        public List<Tuple<int, int>> Snacks { get; set; } 
+        public List<Silla> Sillas { get; set; }
+        public List<Tuple<int, int>> Snacks { get; set; }
 
     }
 }

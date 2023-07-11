@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace WebApi.Models;
+﻿namespace WebApi.Models;
 
 public partial class Silla
 {
@@ -9,9 +6,9 @@ public partial class Silla
 
     public int? NumSala { get; set; }
 
-    public string? NumSilla { get; set; } 
+    public string? NumSilla { get; set; }
 
-    public string? TipoSilla { get; set; } 
+    public string? TipoSilla { get; set; }
 
     //public virtual ICollection<Boleta> Boleta { get; set; } = new List<Boleta>();
 

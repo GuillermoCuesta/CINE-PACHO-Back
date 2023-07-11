@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Reflection.PortableExecutable;
+using System.Reflection;
 using WebApi.Data_Access;
 using WebApi.Interfaces;
 using WebApi.Models;
-using System.Collections.Generic;
-using System.Reflection;
 
 namespace WebApi.Services
 {

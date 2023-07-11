@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using NLog.Fluent;
 using System.Data;
 using WebApi.Data_Access;
 using WebApi.Interfaces;
@@ -24,7 +23,7 @@ namespace WebApi.Services
                 command.Parameters.AddWithValue("@CantidadInStock", inventario.CantidadInStock);
 
                 await command.ExecuteNonQueryAsync();
-                
+
                 Connection.Instance.Close();
 
                 return new StatusCodeResult(200);
@@ -149,7 +148,7 @@ namespace WebApi.Services
                 {
                     command.Parameters.AddWithValue("@IdCompra", compracliente.IdCompra);
                     command.Parameters.AddWithValue("@IdSnack", item.Item1);
-                    command.Parameters.AddWithValue("@IdMultiplex", compracliente.IdMultiplex);                    
+                    command.Parameters.AddWithValue("@IdMultiplex", compracliente.IdMultiplex);
                     command.Parameters.AddWithValue("@CantidadItem", item.Item2);
 
                     await command.ExecuteNonQueryAsync();

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using Newtonsoft.Json.Serialization;
 using System.Data;
 using WebApi.Data_Access;
 using WebApi.Interfaces;
@@ -47,7 +46,7 @@ namespace WebApi.Services
             try
             {
                 Connection.Instance.Open();
-               
+
                 SqlCommand command = new SqlCommand("MostrarSnacks", Connection.Instance.Conectar);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@IdMultiplex", multiplex

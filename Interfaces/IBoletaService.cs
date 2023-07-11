@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApi.Models;
+﻿using WebApi.Models;
 
 namespace WebApi.Interfaces
 {

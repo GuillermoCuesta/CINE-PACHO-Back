@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using NLog.Fluent;
 using WebApi.Data_Access;
 using WebApi.Interfaces;
 using WebApi.Models;
@@ -29,7 +28,7 @@ namespace WebApi.Services
                 }
                 Connection.Instance.Close();
 
-                return new StatusCodeResult(200);   
+                return new StatusCodeResult(200);
             }
             catch (Exception ex)
             {

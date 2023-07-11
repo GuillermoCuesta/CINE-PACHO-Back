@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using System.Data;
-using WebApi.Data_Access;
 using WebApi.Interfaces;
 using WebApi.Models;
-using WebApi.Services;
 
 namespace WebApi.Controllers
 {

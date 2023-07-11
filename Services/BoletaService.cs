@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using NLog.Fluent;
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
 using WebApi.Data_Access;
 using WebApi.Interfaces;

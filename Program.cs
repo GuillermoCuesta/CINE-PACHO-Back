@@ -1,8 +1,6 @@
-using Microsoft.Extensions.DependencyInjection;
-using WebApi.Services;
 using WebApi.Controllers;
 using WebApi.Interfaces;
-using WebApi.Models;
+using WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

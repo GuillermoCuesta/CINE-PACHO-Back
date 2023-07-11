@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Models;
 
@@ -70,319 +68,319 @@ public partial class DbCinepachoContext : DbContext
         modelBuilder.Entity<BoletasGrati>(
             entity =>
         {
-        //    entity.HasKey(e => e.ConsecBoletasg);
+            //    entity.HasKey(e => e.ConsecBoletasg);
 
-        //    entity.ToTable("BOLETAS_GRATIS");
+            //    entity.ToTable("BOLETAS_GRATIS");
 
-        //    entity.HasIndex(e => e.IdCliente, "CLIENTE_BOLETASGRATIS_FK");
+            //    entity.HasIndex(e => e.IdCliente, "CLIENTE_BOLETASGRATIS_FK");
 
-        //    entity.Property(e => e.ConsecBoletasg)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("CONSEC_BOLETASG");
-        //    entity.Property(e => e.FechaReclamo)
-        //        .HasColumnType("datetime")
-        //        .HasColumnName("FECHA_RECLAMO");
-        //    entity.Property(e => e.FechaVencimiento)
-        //        .HasColumnType("datetime")
-        //        .HasColumnName("FECHA_VENCIMIENTO");
-        //    entity.Property(e => e.IdCliente).HasColumnName("ID_CLIENTE");
+            //    entity.Property(e => e.ConsecBoletasg)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("CONSEC_BOLETASG");
+            //    entity.Property(e => e.FechaReclamo)
+            //        .HasColumnType("datetime")
+            //        .HasColumnName("FECHA_RECLAMO");
+            //    entity.Property(e => e.FechaVencimiento)
+            //        .HasColumnType("datetime")
+            //        .HasColumnName("FECHA_VENCIMIENTO");
+            //    entity.Property(e => e.IdCliente).HasColumnName("ID_CLIENTE");
 
-        //    entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.BoletasGratis)
-        //        .HasForeignKey(d => d.IdCliente)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_BOLETAS__CLIENTE_B_CLIENTE");
+            //    entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.BoletasGratis)
+            //        .HasForeignKey(d => d.IdCliente)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_BOLETAS__CLIENTE_B_CLIENTE");
         });
 
         modelBuilder.Entity<Boleta>(entity =>
         {
-        //    entity.HasKey(e => e.IdBoleta);
+            //    entity.HasKey(e => e.IdBoleta);
 
-        //    entity.ToTable("BOLETA");
+            //    entity.ToTable("BOLETA");
 
-        //    entity.HasIndex(e => e.IdCompra, "COMPRA_BOLETA_FK");
+            //    entity.HasIndex(e => e.IdCompra, "COMPRA_BOLETA_FK");
 
-        //    entity.HasIndex(e => new { e.IdMultiplex, e.NumSala, e.NumSilla }, "SILLA_BOLETA_FK");
+            //    entity.HasIndex(e => new { e.IdMultiplex, e.NumSala, e.NumSilla }, "SILLA_BOLETA_FK");
 
-        //    entity.Property(e => e.IdBoleta)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("ID_BOLETA");
-        //    entity.Property(e => e.CantidadBoleta).HasColumnName("CANTIDAD_BOLETA");
-        //    entity.Property(e => e.IdCompra).HasColumnName("ID_COMPRA");
-        //    entity.Property(e => e.IdMultiplex).HasColumnName("ID_MULTIPLEX");
-        //    entity.Property(e => e.NumSala).HasColumnName("NUM_SALA");
-        //    entity.Property(e => e.NumSilla)
-        //        .HasMaxLength(3)
-        //        .IsUnicode(false)
-        //        .HasColumnName("NUM_SILLA");
+            //    entity.Property(e => e.IdBoleta)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("ID_BOLETA");
+            //    entity.Property(e => e.CantidadBoleta).HasColumnName("CANTIDAD_BOLETA");
+            //    entity.Property(e => e.IdCompra).HasColumnName("ID_COMPRA");
+            //    entity.Property(e => e.IdMultiplex).HasColumnName("ID_MULTIPLEX");
+            //    entity.Property(e => e.NumSala).HasColumnName("NUM_SALA");
+            //    entity.Property(e => e.NumSilla)
+            //        .HasMaxLength(3)
+            //        .IsUnicode(false)
+            //        .HasColumnName("NUM_SILLA");
 
-        //    entity.HasOne(d => d.IdCompraNavigation).WithMany(p => p.Boleta)
-        //        .HasForeignKey(d => d.IdCompra)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_BOLETA_COMPRA_BO_COMPRA");
+            //    entity.HasOne(d => d.IdCompraNavigation).WithMany(p => p.Boleta)
+            //        .HasForeignKey(d => d.IdCompra)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_BOLETA_COMPRA_BO_COMPRA");
 
-        //    entity.HasOne(d => d.Silla).WithMany(p => p.Boleta)
-        //        .HasForeignKey(d => new { d.IdMultiplex, d.NumSala, d.NumSilla })
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_BOLETA_SILLA_BOL_SILLA");
+            //    entity.HasOne(d => d.Silla).WithMany(p => p.Boleta)
+            //        .HasForeignKey(d => new { d.IdMultiplex, d.NumSala, d.NumSilla })
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_BOLETA_SILLA_BOL_SILLA");
         });
 
         modelBuilder.Entity<Cargo>(entity =>
         {
-        //    entity.HasKey(e => e.Cargo1);
+            //    entity.HasKey(e => e.Cargo1);
 
-        //    entity.ToTable("CARGO");
+            //    entity.ToTable("CARGO");
 
-        //    entity.Property(e => e.Cargo1)
-        //        .HasMaxLength(30)
-        //        .IsUnicode(false)
-        //        .HasColumnName("CARGO");
+            //    entity.Property(e => e.Cargo1)
+            //        .HasMaxLength(30)
+            //        .IsUnicode(false)
+            //        .HasColumnName("CARGO");
         });
 
         modelBuilder.Entity<Cliente>(entity =>
         {
-        //    entity.HasKey(e => e.IdCliente);
+            //    entity.HasKey(e => e.IdCliente);
 
-        //    entity.ToTable("CLIENTE");
+            //    entity.ToTable("CLIENTE");
 
-        //    entity.Property(e => e.IdCliente)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("ID_CLIENTE");
-        //    entity.Property(e => e.CedulaCliente).HasColumnName("CEDULA_CLIENTE");
-        //    entity.Property(e => e.NombreCliente)
-        //        .HasMaxLength(40)
-        //        .IsUnicode(false)
-        //        .HasColumnName("NOMBRE_CLIENTE");
-        //    entity.Property(e => e.NumTelefonoCliente).HasColumnName("NUM_TELEFONO_CLIENTE");
-        //    entity.Property(e => e.Puntos).HasColumnName("PUNTOS");
+            //    entity.Property(e => e.IdCliente)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("ID_CLIENTE");
+            //    entity.Property(e => e.CedulaCliente).HasColumnName("CEDULA_CLIENTE");
+            //    entity.Property(e => e.NombreCliente)
+            //        .HasMaxLength(40)
+            //        .IsUnicode(false)
+            //        .HasColumnName("NOMBRE_CLIENTE");
+            //    entity.Property(e => e.NumTelefonoCliente).HasColumnName("NUM_TELEFONO_CLIENTE");
+            //    entity.Property(e => e.Puntos).HasColumnName("PUNTOS");
         });
 
         modelBuilder.Entity<Compra>(entity =>
         {
-        //    entity.HasKey(e => e.IdCompra);
+            //    entity.HasKey(e => e.IdCompra);
 
-        //    entity.ToTable("COMPRA");
+            //    entity.ToTable("COMPRA");
 
-        //    entity.HasIndex(e => e.IdCliente, "CLIENTE_COMPRA_FK");
+            //    entity.HasIndex(e => e.IdCliente, "CLIENTE_COMPRA_FK");
 
-        //    entity.Property(e => e.IdCompra)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("ID_COMPRA");
-        //    entity.Property(e => e.FechaCompra)
-        //        .HasColumnType("datetime")
-        //        .HasColumnName("FECHA_COMPRA");
-        //    entity.Property(e => e.IdCliente).HasColumnName("ID_CLIENTE");
-        //    entity.Property(e => e.TotalCompra)
-        //        .HasColumnType("decimal(30, 3)")
-        //        .HasColumnName("TOTAL_COMPRA");
+            //    entity.Property(e => e.IdCompra)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("ID_COMPRA");
+            //    entity.Property(e => e.FechaCompra)
+            //        .HasColumnType("datetime")
+            //        .HasColumnName("FECHA_COMPRA");
+            //    entity.Property(e => e.IdCliente).HasColumnName("ID_CLIENTE");
+            //    entity.Property(e => e.TotalCompra)
+            //        .HasColumnType("decimal(30, 3)")
+            //        .HasColumnName("TOTAL_COMPRA");
 
-        //    entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Compras)
-        //        .HasForeignKey(d => d.IdCliente)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_COMPRA_CLIENTE_C_CLIENTE");
+            //    entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Compras)
+            //        .HasForeignKey(d => d.IdCliente)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_COMPRA_CLIENTE_C_CLIENTE");
         });
 
         modelBuilder.Entity<Empleado>(entity =>
         {
-        //    entity.HasKey(e => e.CodEmpleado);
+            //    entity.HasKey(e => e.CodEmpleado);
 
-        //    entity.ToTable("EMPLEADO");
+            //    entity.ToTable("EMPLEADO");
 
-        //    entity.HasIndex(e => e.Cargo, "CARGO_EMPLEADO_FK");
+            //    entity.HasIndex(e => e.Cargo, "CARGO_EMPLEADO_FK");
 
-        //    entity.HasIndex(e => e.IdMultiplex, "MULTIPLEX_EMPLEADO_FK");
+            //    entity.HasIndex(e => e.IdMultiplex, "MULTIPLEX_EMPLEADO_FK");
 
-        //    entity.HasIndex(e => e.Rol, "ROL_EMPLEADO_FK");
+            //    entity.HasIndex(e => e.Rol, "ROL_EMPLEADO_FK");
 
-        //    entity.Property(e => e.CodEmpleado)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("COD_EMPLEADO");
-        //    entity.Property(e => e.Cargo)
-        //        .HasMaxLength(30)
-        //        .IsUnicode(false)
-        //        .HasColumnName("CARGO");
-        //    entity.Property(e => e.Cedula).HasColumnName("CEDULA");
-        //    entity.Property(e => e.FechaContrato)
-        //        .HasColumnType("datetime")
-        //        .HasColumnName("FECHA_CONTRATO");
-        //    entity.Property(e => e.IdMultiplex).HasColumnName("ID_MULTIPLEX");
-        //    entity.Property(e => e.NombreEmpleado)
-        //        .HasMaxLength(45)
-        //        .IsUnicode(false)
-        //        .HasColumnName("NOMBRE_EMPLEADO");
-        //    entity.Property(e => e.NumTelefono).HasColumnName("NUM_TELEFONO");
-        //    entity.Property(e => e.Rol)
-        //        .HasMaxLength(40)
-        //        .IsUnicode(false)
-        //        .HasColumnName("ROL");
-        //    entity.Property(e => e.Salario)
-        //        .HasColumnType("decimal(30, 3)")
-        //        .HasColumnName("SALARIO");
+            //    entity.Property(e => e.CodEmpleado)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("COD_EMPLEADO");
+            //    entity.Property(e => e.Cargo)
+            //        .HasMaxLength(30)
+            //        .IsUnicode(false)
+            //        .HasColumnName("CARGO");
+            //    entity.Property(e => e.Cedula).HasColumnName("CEDULA");
+            //    entity.Property(e => e.FechaContrato)
+            //        .HasColumnType("datetime")
+            //        .HasColumnName("FECHA_CONTRATO");
+            //    entity.Property(e => e.IdMultiplex).HasColumnName("ID_MULTIPLEX");
+            //    entity.Property(e => e.NombreEmpleado)
+            //        .HasMaxLength(45)
+            //        .IsUnicode(false)
+            //        .HasColumnName("NOMBRE_EMPLEADO");
+            //    entity.Property(e => e.NumTelefono).HasColumnName("NUM_TELEFONO");
+            //    entity.Property(e => e.Rol)
+            //        .HasMaxLength(40)
+            //        .IsUnicode(false)
+            //        .HasColumnName("ROL");
+            //    entity.Property(e => e.Salario)
+            //        .HasColumnType("decimal(30, 3)")
+            //        .HasColumnName("SALARIO");
 
-        //    entity.HasOne(d => d.CargoNavigation).WithMany(p => p.Empleados)
-        //        .HasForeignKey(d => d.Cargo)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_EMPLEADO_CARGO_EMP_CARGO");
+            //    entity.HasOne(d => d.CargoNavigation).WithMany(p => p.Empleados)
+            //        .HasForeignKey(d => d.Cargo)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_EMPLEADO_CARGO_EMP_CARGO");
 
-        //    entity.HasOne(d => d.IdMultiplexNavigation).WithMany(p => p.Empleados)
-        //        .HasForeignKey(d => d.IdMultiplex)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_EMPLEADO_MULTIPLEX_MULTIPLE");
+            //    entity.HasOne(d => d.IdMultiplexNavigation).WithMany(p => p.Empleados)
+            //        .HasForeignKey(d => d.IdMultiplex)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_EMPLEADO_MULTIPLEX_MULTIPLE");
 
-        //    entity.HasOne(d => d.RolNavigation).WithMany(p => p.Empleados)
-        //        .HasForeignKey(d => d.Rol)
-        //        .HasConstraintName("FK_EMPLEADO_ROL_EMPLE_ROL");
+            //    entity.HasOne(d => d.RolNavigation).WithMany(p => p.Empleados)
+            //        .HasForeignKey(d => d.Rol)
+            //        .HasConstraintName("FK_EMPLEADO_ROL_EMPLE_ROL");
         });
 
         modelBuilder.Entity<Estado>(entity =>
         {
-        //    entity.HasKey(e => e.Estado1);
+            //    entity.HasKey(e => e.Estado1);
 
-        //    entity.ToTable("ESTADO");
+            //    entity.ToTable("ESTADO");
 
-        //    entity.Property(e => e.Estado1)
-        //        .HasMaxLength(10)
-        //        .IsUnicode(false)
-        //        .HasColumnName("ESTADO");
+            //    entity.Property(e => e.Estado1)
+            //        .HasMaxLength(10)
+            //        .IsUnicode(false)
+            //        .HasColumnName("ESTADO");
         });
 
         modelBuilder.Entity<EvaluacionPelicula>(entity =>
         {
-        //    entity.HasKey(e => e.IdEvaluacionPel);
+            //    entity.HasKey(e => e.IdEvaluacionPel);
 
-        //    entity.ToTable("EVALUACION_PELICULA");
+            //    entity.ToTable("EVALUACION_PELICULA");
 
-        //    entity.HasIndex(e => e.IdCliente, "CLIENTE_EVALUACIONPELI_FK");
+            //    entity.HasIndex(e => e.IdCliente, "CLIENTE_EVALUACIONPELI_FK");
 
-        //    entity.HasIndex(e => e.IdPelicula, "PELICULA_EVALUACIONPELI_FK");
+            //    entity.HasIndex(e => e.IdPelicula, "PELICULA_EVALUACIONPELI_FK");
 
-        //    entity.Property(e => e.IdEvaluacionPel)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("ID_EVALUACION_PEL");
-        //    entity.Property(e => e.CalificacionPelicula).HasColumnName("CALIFICACION_PELICULA");
-        //    entity.Property(e => e.DescEvaluacionPel)
-        //        .HasColumnType("text")
-        //        .HasColumnName("DESC_EVALUACION_PEL");
-        //    entity.Property(e => e.IdCliente).HasColumnName("ID_CLIENTE");
-        //    entity.Property(e => e.IdPelicula).HasColumnName("ID_PELICULA");
+            //    entity.Property(e => e.IdEvaluacionPel)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("ID_EVALUACION_PEL");
+            //    entity.Property(e => e.CalificacionPelicula).HasColumnName("CALIFICACION_PELICULA");
+            //    entity.Property(e => e.DescEvaluacionPel)
+            //        .HasColumnType("text")
+            //        .HasColumnName("DESC_EVALUACION_PEL");
+            //    entity.Property(e => e.IdCliente).HasColumnName("ID_CLIENTE");
+            //    entity.Property(e => e.IdPelicula).HasColumnName("ID_PELICULA");
 
-        //    entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.EvaluacionPeliculas)
-        //        .HasForeignKey(d => d.IdCliente)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_PELIEVALUI_CLIENTE_E_CLIENTE");
+            //    entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.EvaluacionPeliculas)
+            //        .HasForeignKey(d => d.IdCliente)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_PELIEVALUI_CLIENTE_E_CLIENTE");
 
-        //    entity.HasOne(d => d.IdPeliculaNavigation).WithMany(p => p.EvaluacionPeliculas)
-        //        .HasForeignKey(d => d.IdPelicula)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_EVALUACI_PELICULA__PELICULA");
+            //    entity.HasOne(d => d.IdPeliculaNavigation).WithMany(p => p.EvaluacionPeliculas)
+            //        .HasForeignKey(d => d.IdPelicula)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_EVALUACI_PELICULA__PELICULA");
         });
 
         modelBuilder.Entity<EvaluacionServicio>(entity =>
         {
-        //    entity.HasKey(e => e.IdEvaluacionSer);
+            //    entity.HasKey(e => e.IdEvaluacionSer);
 
-        //    entity.ToTable("EVALUACION_SERVICIO");
+            //    entity.ToTable("EVALUACION_SERVICIO");
 
-        //    entity.HasIndex(e => e.IdCliente, "CLIENTE_EVALUACIONSERVI_FK");
+            //    entity.HasIndex(e => e.IdCliente, "CLIENTE_EVALUACIONSERVI_FK");
 
-        //    entity.HasIndex(e => e.IdCompra, "COMPRA_EVALUACIONSERVI_FK");
+            //    entity.HasIndex(e => e.IdCompra, "COMPRA_EVALUACIONSERVI_FK");
 
-        //    entity.Property(e => e.IdEvaluacionSer)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("ID_EVALUACION_SER");
-        //    entity.Property(e => e.CalificacionServicio).HasColumnName("CALIFICACION_SERVICIO");
-        //    entity.Property(e => e.DescEvaluacionSer)
-        //        .HasColumnType("text")
-        //        .HasColumnName("DESC_EVALUACION_SER");
-        //    entity.Property(e => e.IdCliente).HasColumnName("ID_CLIENTE");
-        //    entity.Property(e => e.IdCompra).HasColumnName("ID_COMPRA");
+            //    entity.Property(e => e.IdEvaluacionSer)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("ID_EVALUACION_SER");
+            //    entity.Property(e => e.CalificacionServicio).HasColumnName("CALIFICACION_SERVICIO");
+            //    entity.Property(e => e.DescEvaluacionSer)
+            //        .HasColumnType("text")
+            //        .HasColumnName("DESC_EVALUACION_SER");
+            //    entity.Property(e => e.IdCliente).HasColumnName("ID_CLIENTE");
+            //    entity.Property(e => e.IdCompra).HasColumnName("ID_COMPRA");
 
-        //    entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.EvaluacionServicios)
-        //        .HasForeignKey(d => d.IdCliente)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_SERVIEVALU_CLIENTE_S_CLIENTE");
+            //    entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.EvaluacionServicios)
+            //        .HasForeignKey(d => d.IdCliente)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_SERVIEVALU_CLIENTE_S_CLIENTE");
 
-        //    entity.HasOne(d => d.IdCompraNavigation).WithMany(p => p.EvaluacionServicios)
-        //        .HasForeignKey(d => d.IdCompra)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_EVALUACI_COMPRA_EV_COMPRA");
+            //    entity.HasOne(d => d.IdCompraNavigation).WithMany(p => p.EvaluacionServicios)
+            //        .HasForeignKey(d => d.IdCompra)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_EVALUACI_COMPRA_EV_COMPRA");
         });
 
         modelBuilder.Entity<Funcion>(entity =>
         {
-        //    entity.HasKey(e => e.IdFuncion);
+            //    entity.HasKey(e => e.IdFuncion);
 
-        //    entity.ToTable("FUNCION");
+            //    entity.ToTable("FUNCION");
 
-        //    entity.HasIndex(e => e.Estado, "ESTADO_FUNCION_FK");
+            //    entity.HasIndex(e => e.Estado, "ESTADO_FUNCION_FK");
 
-        //    entity.HasIndex(e => e.IdPelicula, "PELICULA_FUNCION_FK");
+            //    entity.HasIndex(e => e.IdPelicula, "PELICULA_FUNCION_FK");
 
-        //    entity.HasIndex(e => new { e.IdMultiplex, e.NumSala }, "SALA_FUNCION_FK");
+            //    entity.HasIndex(e => new { e.IdMultiplex, e.NumSala }, "SALA_FUNCION_FK");
 
-        //    entity.Property(e => e.IdFuncion)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("ID_FUNCION");
-        //    entity.Property(e => e.Estado)
-        //        .HasMaxLength(10)
-        //        .IsUnicode(false)
-        //        .HasColumnName("ESTADO");
-        //    entity.Property(e => e.FechaFin)
-        //        .HasColumnType("datetime")
-        //        .HasColumnName("FECHA_FIN");
-        //    entity.Property(e => e.FechaInicio)
-        //        .HasColumnType("datetime")
-        //        .HasColumnName("FECHA_INICIO");
-        //    entity.Property(e => e.IdMultiplex).HasColumnName("ID_MULTIPLEX");
-        //    entity.Property(e => e.IdPelicula).HasColumnName("ID_PELICULA");
-        //    entity.Property(e => e.NumSala).HasColumnName("NUM_SALA");
+            //    entity.Property(e => e.IdFuncion)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("ID_FUNCION");
+            //    entity.Property(e => e.Estado)
+            //        .HasMaxLength(10)
+            //        .IsUnicode(false)
+            //        .HasColumnName("ESTADO");
+            //    entity.Property(e => e.FechaFin)
+            //        .HasColumnType("datetime")
+            //        .HasColumnName("FECHA_FIN");
+            //    entity.Property(e => e.FechaInicio)
+            //        .HasColumnType("datetime")
+            //        .HasColumnName("FECHA_INICIO");
+            //    entity.Property(e => e.IdMultiplex).HasColumnName("ID_MULTIPLEX");
+            //    entity.Property(e => e.IdPelicula).HasColumnName("ID_PELICULA");
+            //    entity.Property(e => e.NumSala).HasColumnName("NUM_SALA");
 
-        //    entity.HasOne(d => d.EstadoNavigation).WithMany(p => p.Funcions)
-        //        .HasForeignKey(d => d.Estado)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_FUNCION_ESTADO_FU_ESTADO");
+            //    entity.HasOne(d => d.EstadoNavigation).WithMany(p => p.Funcions)
+            //        .HasForeignKey(d => d.Estado)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_FUNCION_ESTADO_FU_ESTADO");
 
-        //    entity.HasOne(d => d.IdPeliculaNavigation).WithMany(p => p.Funcions)
-        //        .HasForeignKey(d => d.IdPelicula)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_FUNCION_PELICULA__PELICULA");
+            //    entity.HasOne(d => d.IdPeliculaNavigation).WithMany(p => p.Funcions)
+            //        .HasForeignKey(d => d.IdPelicula)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_FUNCION_PELICULA__PELICULA");
 
-        //    entity.HasOne(d => d.Sala).WithMany(p => p.Funcions)
-        //        .HasForeignKey(d => new { d.IdMultiplex, d.NumSala })
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_FUNCION_SALA_FUNC_SALA");
+            //    entity.HasOne(d => d.Sala).WithMany(p => p.Funcions)
+            //        .HasForeignKey(d => new { d.IdMultiplex, d.NumSala })
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_FUNCION_SALA_FUNC_SALA");
         });
 
         modelBuilder.Entity<HistorialCargo>(entity =>
         {
-        //    entity.HasKey(e => e.ConsecHistorial);
+            //    entity.HasKey(e => e.ConsecHistorial);
 
-        //    entity.ToTable("HISTORIAL_CARGOS");
+            //    entity.ToTable("HISTORIAL_CARGOS");
 
-        //    entity.HasIndex(e => e.Cargo, "CARGO_HISTORIAL_FK");
+            //    entity.HasIndex(e => e.Cargo, "CARGO_HISTORIAL_FK");
 
-        //    entity.HasIndex(e => e.CodEmpleado, "EMPLEADO_HISTORIALCAR_FK");
+            //    entity.HasIndex(e => e.CodEmpleado, "EMPLEADO_HISTORIALCAR_FK");
 
-        //    entity.Property(e => e.ConsecHistorial)
-        //        .ValueGeneratedNever()
-        //        .HasColumnName("CONSEC_HISTORIAL");
-        //    entity.Property(e => e.Cargo)
-        //        .HasMaxLength(30)
-        //        .IsUnicode(false)
-        //        .HasColumnName("CARGO");
-        //    entity.Property(e => e.CodEmpleado).HasColumnName("COD_EMPLEADO");
-        //    entity.Property(e => e.FechaAsignacion)
-        //        .HasColumnType("datetime")
-        //        .HasColumnName("FECHA_ASIGNACION");
+            //    entity.Property(e => e.ConsecHistorial)
+            //        .ValueGeneratedNever()
+            //        .HasColumnName("CONSEC_HISTORIAL");
+            //    entity.Property(e => e.Cargo)
+            //        .HasMaxLength(30)
+            //        .IsUnicode(false)
+            //        .HasColumnName("CARGO");
+            //    entity.Property(e => e.CodEmpleado).HasColumnName("COD_EMPLEADO");
+            //    entity.Property(e => e.FechaAsignacion)
+            //        .HasColumnType("datetime")
+            //        .HasColumnName("FECHA_ASIGNACION");
 
-        //    entity.HasOne(d => d.CargoNavigation).WithMany(p => p.HistorialCargos)
-        //        .HasForeignKey(d => d.Cargo)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_HISTORIA_CARGO_HIS_CARGO");
+            //    entity.HasOne(d => d.CargoNavigation).WithMany(p => p.HistorialCargos)
+            //        .HasForeignKey(d => d.Cargo)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_HISTORIA_CARGO_HIS_CARGO");
 
-        //    entity.HasOne(d => d.CodEmpleadoNavigation).WithMany(p => p.HistorialCargos)
-        //        .HasForeignKey(d => d.CodEmpleado)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_HISTORIA_EMPLEADO__EMPLEADO");
+            //    entity.HasOne(d => d.CodEmpleadoNavigation).WithMany(p => p.HistorialCargos)
+            //        .HasForeignKey(d => d.CodEmpleado)
+            //        .OnDelete(DeleteBehavior.ClientSetNull)
+            //        .HasConstraintName("FK_HISTORIA_EMPLEADO__EMPLEADO");
         });
 
         modelBuilder.Entity<Inventario>(entity =>

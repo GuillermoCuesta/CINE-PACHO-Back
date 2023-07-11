@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Reflection.PortableExecutable;
 using WebApi.Data_Access;
 using WebApi.Interfaces;
 using WebApi.Models;
-using System.Collections.Generic;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Reflection;
 
 namespace WebApi.Services
-
+{
     public class FuncionService : IFuncionService
     {
         public async Task<IActionResult> Crear(Funcion funcion)
@@ -67,11 +62,11 @@ namespace WebApi.Services
                 while (reader.Read())
                 {
                     Funcion funcion = new Funcion
-                    {         
+                    {
                         Ubicacion = (string)reader["UBICACION"],
                         IdPelicula = (int)reader["ID_PELICULA"],
                         NombrePelicula = (string)reader["NOMBRE_PELICULA"],
-                        ImagenPelicula= (string)reader["IMAGEN_PELICULA"],
+                        ImagenPelicula = (string)reader["IMAGEN_PELICULA"],
                         IdFuncion = (int)reader["ID_FUNCION"],
                         IdMultiplex = multiplex,
                         NumSala = (int)reader["NUM_SALA"],
@@ -91,6 +86,16 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
+                var errorResponse = new ErrorResponse
+                {
+                    StatusCode = 500,
+                    Message = ex.ToString()
+                };
+
+                return new ObjectResult(errorResponse)
+                {
+                    StatusCode = 500
+                };
             }
         }
 
@@ -164,19 +169,18 @@ namespace WebApi.Services
                 }
             }
             catch (Exception ex)
-
             {
-<<<<<<< HEAD
-              var errorResponse = new ErrorResponse
+                var errorResponse = new ErrorResponse
                 {
                     StatusCode = 500,
                     Message = ex.ToString()
                 };
-=======
->>>>>>> fd6e581 (Merge branch 'main' into despliegue)
 
+                return new ObjectResult(errorResponse)
                 {
+                    StatusCode = 500
+                };
+            }
         }
-
     }
 }
